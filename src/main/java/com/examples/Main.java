@@ -27,5 +27,9 @@ public class Main {
         Car c = jdbcDaoTemplate.getCar(3);
         System.out.println(c.getModel());
 
+        // Using spring JDBC dao support
+        JdbcDaoUsingDaoSupport jdbcDaoUsingDaoSupport = (JdbcDaoUsingDaoSupport) context.getBean("jdbcDaoUsingDaoSupport");
+        System.out.println(jdbcDaoUsingDaoSupport.getCar(1).getModel());
+
     }
 }

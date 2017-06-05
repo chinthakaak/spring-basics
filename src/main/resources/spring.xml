@@ -26,4 +26,8 @@
     <bean id="jdbcDaoTemplate" class="com.examples.JdbcDaoUsingTemplate">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+
+    <bean id="jdbcDaoUsingDaoSupport" class="com.examples.JdbcDaoUsingDaoSupport">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 </beans>
