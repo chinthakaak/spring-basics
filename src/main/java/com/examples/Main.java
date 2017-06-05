@@ -10,6 +10,11 @@ import java.sql.SQLException;
  */
 public class Main {
     public static void main(String[] args) throws SQLException {
+        // Pure JDBC
+        JdbcDao jdbc = new JdbcDao();
+        System.out.println(jdbc.getCar(2).getModel());
+
+        // JDBC with DataSource injected in spring
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         Car car = (Car)context.getBean("car");
         System.out.println(car.getModel());
@@ -17,6 +22,7 @@ public class Main {
         JdbcDao jdbcDao = (JdbcDao)context.getBean("jdbcDao");
         jdbcDao.getCar(2);
 
+        // Using spring JDBC template
         JdbcDaoUsingTemplate jdbcDaoTemplate = (JdbcDaoUsingTemplate)context.getBean("jdbcDaoTemplate");
         Car c = jdbcDaoTemplate.getCar(3);
         System.out.println(c.getModel());
