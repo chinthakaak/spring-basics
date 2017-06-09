@@ -2,13 +2,22 @@
 
 <beans xmlns = "http://www.springframework.org/schema/beans"
        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config></context:annotation-config>
+    
     <bean id="car" class="com.examples.Car">
         <property name="id" value="1"/>
         <property name="model" value="Nissan"/>
     </bean>
 
+    <bean id="van" class="com.examples.Van">
+        <property name="id" value="2"/>
+        <property name="model" value="Isuzu"/>
+    </bean>
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="username" value="company"/>
@@ -29,5 +38,13 @@
 
     <bean id="jdbcDaoUsingDaoSupport" class="com.examples.JdbcDaoUsingDaoSupport">
         <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames" >
+            <list>
+                <value>messages</value>
+            </list>
+        </property>
     </bean>
 </beans>
