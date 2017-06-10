@@ -8,7 +8,12 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     <context:annotation-config></context:annotation-config>
-    
+    <bean id="a" class="com.examples.A">
+        <constructor-arg ref="b"/>
+    </bean>
+
+    <bean id="b" class="com.examples.C"/>
+
     <bean id="car" class="com.examples.Car">
         <property name="id" value="1"/>
         <property name="model" value="Nissan"/>
