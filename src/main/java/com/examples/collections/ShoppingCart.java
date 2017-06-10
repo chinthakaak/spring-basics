@@ -2,6 +2,7 @@ package com.examples.collections;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by kushan_chinthaka on 6/10/2017.
@@ -9,7 +10,9 @@ import java.util.Map;
 public class ShoppingCart {
     private List<String> items;
 
-    private Map<String, Integer> quantity;
+    private Set<String> gifts;
+
+    private Map<String, Integer> quantities;
 
     public List<String> getItems() {
         return items;
@@ -19,11 +22,19 @@ public class ShoppingCart {
         this.items = items;
     }
 
-    public Map<String, Integer> getQuantity() {
-        return quantity;
+    public Map<String, Integer> getQuantities() {
+        return quantities;
     }
 
-    public void setQuantity(Map<String, Integer> quantity) {
-        this.quantity = quantity;
+    public void setQuantities(Map<String, Integer> quantities) {
+        this.quantities = quantities;
+    }
+
+    public Set<String> getGifts() {
+        return gifts;
+    }
+
+    public void setGifts(Set<String> gifts) {
+        this.gifts = gifts;
     }
 }

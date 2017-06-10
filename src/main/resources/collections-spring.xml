@@ -3,14 +3,44 @@
 <beans xmlns = "http://www.springframework.org/schema/beans"
        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util = "http://www.springframework.org/schema/util"
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+       ">
     <bean id="shoppingcart" class="com.examples.collections.ShoppingCart">
         <property name="items">
             <ref local="reusableList"/>
         </property>
+        <property name="quantities">
+            <ref local="quantityMap"/>
+        </property>
+
+        <property name="gifts">
+            <!--1. Typed set using SetFactory bean-->
+
+            <!--<bean class="org.springframework.beans.factory.config.SetFactoryBean">-->
+                <!--<property name="targetSetClass">-->
+                    <!--<value>java.util.TreeSet</value>-->
+                <!--</property>-->
+                <!--<property name="sourceSet">-->
+                    <!--<set>-->
+                        <!--<value>car</value>-->
+                        <!--<value>bike</value>-->
+                    <!--</set>-->
+                <!--</property>-->
+            <!--</bean>-->
+
+            <!--2. Typed list using util namespace-->
+
+            <util:set set-class="java.util.TreeSet">
+                <value>1</value>
+                <value>test</value>
+            </util:set>
+        </property>
+
     </bean>
 
     <bean id="shoppingcart2" class="com.examples.collections.ShoppingCart">
@@ -19,6 +49,7 @@
         </property>
     </bean>
 
+    <!--3. Reusing collection using ListFactoryBean-->
     <bean id="reusableList" class="org.springframework.beans.factory.config.ListFactoryBean">
         <property name="sourceList">
             <list>
@@ -27,4 +58,10 @@
             </list>
         </property>
     </bean>
+
+    <!--4. Reusing collection using util namespace-->
+    <util:map id="quantityMap">
+        <entry key="butter" value="1"/>
+        <entry key="jam" value="2"/>
+    </util:map>
 </beans>
