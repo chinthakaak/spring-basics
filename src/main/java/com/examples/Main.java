@@ -17,8 +17,10 @@ public class Main {
 //
 //        // JDBC with DataSource injected in spring
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-//        Car car = (Car)context.getBean("car");
-//        System.out.println(car.getModel());
+        Car car = (Car)context.getBean("car");
+        System.out.println(car.getModel());
+        System.out.println(car.getDrivers());
+        System.out.println(car.getWeight());
 //
 //        JdbcDao jdbcDao = (JdbcDao)context.getBean("jdbcDao");
 //        jdbcDao.getCar(2);

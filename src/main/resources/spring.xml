@@ -4,10 +4,11 @@
        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
     <context:annotation-config></context:annotation-config>
+    <bean id="product" class="com.examples.Product"/>
     <bean id="a" class="com.examples.A">
         <constructor-arg ref="b"/>
     </bean>
@@ -17,6 +18,22 @@
     <bean id="car" class="com.examples.Car">
         <property name="id" value="1"/>
         <property name="model" value="Nissan"/>
+        <property name="drivers" >
+            <set>
+                <value>kushan</value>
+                <value>nethum</value>
+            </set>
+        </property>
+
+        <property name="weight">
+            <!--<map>-->
+                <!--<entry key="nissan" value="100"/>-->
+                <!--<entry key="toyota" value="200"/>-->
+            <!--</map>-->
+            <props>
+                <prop key="mazda">100</prop>
+            </props>
+        </property>
     </bean>
 
     <bean id="van" class="com.examples.Van">
@@ -50,6 +67,35 @@
             <list>
                 <value>messages</value>
             </list>
+        </property>
+    </bean>
+
+    <bean id="vehicle" class="com.examples.Vehicle">
+        <property name="details">
+            <list>
+                <value>nissan</value>
+            </list>
+        </property>
+
+        <property name="systems">
+            <props>
+                <prop key="ignition">high</prop>
+                <prop key="coolant">smooth</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="bus" class="com.examples.Bus" parent="vehicle">
+        <property name="details">
+            <list merge="true">
+                <value>toyota</value>
+            </list>
+        </property>
+
+        <property name="systems">
+            <props merge="true">
+                <prop key="ignition">low</prop>
+            </props>
         </property>
     </bean>
 </beans>
