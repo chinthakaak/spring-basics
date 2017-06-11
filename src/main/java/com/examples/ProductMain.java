@@ -1,6 +1,5 @@
 package com.examples;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class ProductMain {
     public static void main(String[] args) {
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("src/spring.xml");
         context.registerShutdownHook();
         Product product = context.getBean("product", Product.class);
     }

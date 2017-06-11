@@ -16,7 +16,7 @@ public class Main {
 //        System.out.println(jdbc.getCar(2).getModel());
 //
 //        // JDBC with DataSource injected in spring
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:spring.xml");
         Car car = (Car)context.getBean("car");
         System.out.println(car.getModel());
         System.out.println(car.getDrivers());

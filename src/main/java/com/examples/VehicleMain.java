@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class VehicleMain {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("src/spring.xml");
         Bus bus = context.getBean("bus", Bus.class);
         System.out.println(bus.getDetails());
         System.out.println(bus.getSystems());
