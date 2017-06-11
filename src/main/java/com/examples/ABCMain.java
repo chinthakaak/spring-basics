@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class ABCMain {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("src/spring.xml");
         A a = context.getBean("a", A.class);
         a.print();
     }
